@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:la_vie/presentation/my_cart/view_model/cubit.dart';
 
 import '../presentation/resources/routes_manager.dart';
 import '../presentation/resources/theme_manager.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ProductPageCubit()..getProduct(),
+        ),
+        BlocProvider(
+          create: (context) => MyCartCubit(),
         ),
       ],
       child: MaterialApp(

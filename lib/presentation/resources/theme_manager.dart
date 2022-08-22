@@ -20,7 +20,7 @@ ThemeData getAppTheme() {
         color: ColorManager.primary,
       ),
       iconTheme: IconThemeData(
-        color: ColorManager.lightGreen,
+        color: ColorManager.black,
       ),
     ),
 

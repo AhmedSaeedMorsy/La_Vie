@@ -35,7 +35,10 @@ class AppStrings {
   static String mins = "-";
   static String plus = "+";
   static String notification = "Notification";
-    static String notificationTitle = "Joy Arnold left 6 comment on Your post";
-    static String notificationTime = "Yesterday at 11:42 PM";
-
+  static String notificationTitle = "Joy Arnold left 6 comment on Your post";
+  static String notificationTime = "Yesterday at 11:42 PM";
+  static String myCart = "My Cart";
+  static String cartEmpty = "Your Cart is empty";
+  static String emptyBio =
+      "Sorry, the keyword you entered cannot be found, please check again or searsh with another keyword";
 }

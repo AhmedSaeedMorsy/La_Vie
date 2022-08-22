@@ -8,7 +8,6 @@ class ColorManager {
   static Color lightGreen = const Color(0xff1ABC00);
 
   static Color grey1 = const Color(0xff8A8A8A);
-  static Color grey2 = const Color(0xff6F6F6F);
-  static Color grey3 = Color(0Xa9F8F8F8);
+  static Color grey2 = const Color(0xff8A8A8A);
   static Color error = const Color(0xffe61f34);
 }

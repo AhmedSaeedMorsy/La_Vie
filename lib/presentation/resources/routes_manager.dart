@@ -6,6 +6,7 @@ import '../forget_password_screen/forget_password_screen.dart';
 import '../home_screen/view/home_screen.dart';
 import '../login_screen/view/login_screen.dart';
 import '../mobile_layout/view/mobile_layout.dart';
+import '../my_cart/view/my_cart.dart';
 import '../register_screen/register_screen.dart';
 import '../splash_screen/splash_screen.dart';
 import '../web_layout/web_layout.dart';
@@ -19,6 +20,8 @@ class Routes {
   static const String webLayoutRoute = "/webLayOut";
   static const String mobileLayoutRoute = "/mobileLayOut";
   static const String searchRoute = "/search";
+    static const String myCartRoute = "/myCart";
+
 }
 
 class RouteGenerator {
@@ -54,7 +57,11 @@ class RouteGenerator {
         );
       case Routes.searchRoute:
         return MaterialPageRoute(
-          builder: (_) => const SearchScreen(),
+          builder: (_) => SearchScreen(),
+        );
+        case Routes.myCartRoute:
+        return MaterialPageRoute(
+          builder: (_) => const MyCartScreen(),
         );
       default:
         return unDefiendRoute();

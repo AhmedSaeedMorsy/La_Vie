@@ -15,5 +15,10 @@ class AssetsManager {
   static const String personIcon = "$imagePath/person_icon.svg";
   static const String qrCode = "$imagePath/qr-code.svg";
   static const String person = "$imagePath/person.png";
+  static const String search = "$imagePath/search.svg";
+  static const String delete = "$imagePath/delete.svg";
+  static const String empty = "$imagePath/empty.svg";
+  static const String plants = "$imagePath/plants.png";
+    static const String deleteIcon = "$imagePath/deleteIcon.svg";
 
-  }
+}

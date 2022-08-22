@@ -1,4 +1,5 @@
 import 'package:conditional_builder_rec/conditional_builder_rec.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,7 +25,6 @@ class ShopScreen extends StatefulWidget {
 
 class _PlantsScreenState extends State<ShopScreen>
     with TickerProviderStateMixin {
-  var searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     TabController tabController =
@@ -54,16 +54,36 @@ class _PlantsScreenState extends State<ShopScreen>
                       children: [
                         Expanded(
                           flex: AppConstants.int6,
-                          child: SharedWidget.defaultTextFormField(
-                              controller: searchController,
-                              textInputType: TextInputType.text,
-                              hint: AppStrings.search,
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  Routes.searchRoute,
-                                );
-                              }),
+                          child: InkWell(
+                            onTap: () => Navigator.pushNamed(
+                              context,
+                              Routes.searchRoute,
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: ColorManager.grey2),
+                                borderRadius: BorderRadius.circular(
+                                  AppSize.s8,
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      AssetsManager.search,
+                                    ),
+                                    const SizedBox(
+                                      width: AppSize.s16,
+                                    ),
+                                    Text(
+                                      AppStrings.search,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                         const SizedBox(
                           width: AppSize.s16,
@@ -76,7 +96,12 @@ class _PlantsScreenState extends State<ShopScreen>
                               color: ColorManager.lightGreen,
                             ),
                             child: MaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  Routes.myCartRoute,
+                                );
+                              },
                               child: SvgPicture.asset(
                                 AssetsManager.basket,
                               ),

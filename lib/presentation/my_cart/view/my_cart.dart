@@ -2,57 +2,55 @@ import 'package:conditional_builder_rec/conditional_builder_rec.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:la_vie/presentation/my_cart/view_model/cubit.dart';
-import 'package:la_vie/presentation/my_cart/view_model/states.dart';
 import 'package:la_vie/presentation/resources/assets_manager.dart';
 import 'package:la_vie/presentation/resources/color_manager.dart';
 import 'package:la_vie/presentation/resources/strings_manager.dart';
 import 'package:la_vie/presentation/resources/values_manager.dart';
 import 'package:la_vie/presentation/resources/widget.dart';
+import 'package:la_vie/presentation/shop/view_model/cubit.dart';
+import 'package:la_vie/presentation/shop/view_model/states.dart';
 
 class MyCartScreen extends StatelessWidget {
   const MyCartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MyCartCubit, MyCartStates>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              AppStrings.myCart,
-              style: Theme.of(context).textTheme.bodyLarge,
+    return BlocBuilder<ProductPageCubit, ProductPageStates>(
+        builder: (context, state) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            AppStrings.myCart,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(AppPadding.p22),
+          child: Center(
+            child: ConditionalBuilderRec(
+              condition: ProductPageCubit.get(context).carts.isNotEmpty,
+              builder: (context) {
+                return ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) => cartItem(
+                      context, ProductPageCubit.get(context).carts[index]),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    height: AppSize.s20,
+                  ),
+                  itemCount: ProductPageCubit.get(context).carts.length,
+                );
+              },
+              fallback: (context) {
+                return SharedWidget.noItemWidget(context);
+              },
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(AppPadding.p22),
-            child: Center(
-              child: ConditionalBuilderRec(
-                condition: true,
-                builder: (context) {
-                  return ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) => cartItem(context),
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: AppSize.s20,
-                    ),
-                    itemCount: 10,
-                  );
-                  
-                },
-                fallback: (context){
-                  return SharedWidget.noItemWidget(context);
-                },
-              ),
-            ),
-          ),
-        );
-      },
-    );
+        ),
+      );
+    });
   }
 
-  Widget cartItem(context) {
+  Widget cartItem(context, Map myCart) {
     return Container(
       decoration: BoxDecoration(
         color: ColorManager.primary,
@@ -80,10 +78,10 @@ class MyCartScreen extends StatelessWidget {
                     AppSize.s8,
                   ),
                 ),
-                child: const Image(
+                child: Image(
                   fit: BoxFit.contain,
-                  image: AssetImage(
-                    AssetsManager.plants,
+                  image: NetworkImage(
+                    myCart['imgUrl'],
                   ),
                 ),
               ),
@@ -95,14 +93,14 @@ class MyCartScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Title Plant",
+                      "${myCart['name']}",
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     const SizedBox(
                       height: AppSize.s10,
                     ),
                     Text(
-                      "200.0",
+                      "${myCart['price']}",
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
                     Padding(
@@ -111,7 +109,7 @@ class MyCartScreen extends StatelessWidget {
                         children: [
                           InkWell(
                               onTap: () {
-                                MyCartCubit.get(context).decressCounter();
+                                ProductPageCubit.get(context).decressCounter();
                               },
                               child: Text(
                                 AppStrings.mins,
@@ -121,13 +119,13 @@ class MyCartScreen extends StatelessWidget {
                           const SizedBox(
                             width: AppSize.s5,
                           ),
-                          Text("${MyCartCubit.get(context).counter}"),
+                          Text("${myCart['counter']}"),
                           const SizedBox(
                             width: AppSize.s5,
                           ),
                           InkWell(
                             onTap: () {
-                              MyCartCubit.get(context).incressCounter();
+                              ProductPageCubit.get(context).incressCounter();
                             },
                             child: Text(
                               AppStrings.plus,
@@ -135,7 +133,12 @@ class MyCartScreen extends StatelessWidget {
                             ),
                           ),
                           const Spacer(),
-                          SvgPicture.asset(AssetsManager.deleteIcon)
+                          InkWell(
+                              onTap: () {
+                                ProductPageCubit.get(context)
+                                    .deleteFromDataBase(id: myCart['id']);
+                              },
+                              child: SvgPicture.asset(AssetsManager.deleteIcon))
                         ],
                       ),
                     )

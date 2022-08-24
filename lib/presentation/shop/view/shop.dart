@@ -1,5 +1,7 @@
+import 'dart:developer';
+
 import 'package:conditional_builder_rec/conditional_builder_rec.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,7 +12,6 @@ import 'package:la_vie/presentation/resources/constants_manager.dart';
 import 'package:la_vie/presentation/resources/routes_manager.dart';
 import 'package:la_vie/presentation/resources/strings_manager.dart';
 import 'package:la_vie/presentation/resources/values_manager.dart';
-import 'package:la_vie/presentation/resources/widget.dart';
 import 'package:la_vie/presentation/shop/view_model/cubit.dart';
 import 'package:la_vie/presentation/shop/view_model/states.dart';
 
@@ -165,7 +166,6 @@ class _PlantsScreenState extends State<ShopScreen>
                                 ProductPageCubit.get(context)
                                     .productModel
                                     .data[index],
-                                ProductPageCubit.get(context).counter,
                               ),
                             ),
                           ),
@@ -176,7 +176,6 @@ class _PlantsScreenState extends State<ShopScreen>
                               ProductPageCubit.get(context).plants.length,
                               (index) => buildGradItem(
                                 ProductPageCubit.get(context).plants[index],
-                                ProductPageCubit.get(context).counter,
                               ),
                             ),
                           ),
@@ -187,7 +186,6 @@ class _PlantsScreenState extends State<ShopScreen>
                               ProductPageCubit.get(context).seeds.length,
                               (index) => buildGradItem(
                                 ProductPageCubit.get(context).seeds[index],
-                                ProductPageCubit.get(context).counter,
                               ),
                             ),
                           ),
@@ -198,7 +196,6 @@ class _PlantsScreenState extends State<ShopScreen>
                               ProductPageCubit.get(context).tools.length,
                               (index) => buildGradItem(
                                 ProductPageCubit.get(context).tools[index],
-                                ProductPageCubit.get(context).counter,
                               ),
                             ),
                           ),
@@ -237,7 +234,6 @@ class _PlantsScreenState extends State<ShopScreen>
 
   Widget buildGradItem(
     ProductData model,
-    int counter,
   ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSize.s8),
@@ -284,7 +280,13 @@ class _PlantsScreenState extends State<ShopScreen>
                       ),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          ProductPageCubit.get(context).insertDataBase(
+                              name: model.name,
+                              price: model.price,
+                              imgUrl: "${baseUrl + model.imageUrl}",
+                              counter: model.counter);
+                        },
                         child: Text(
                           AppStrings.addToCart,
                           style: Theme.of(context).textTheme.labelLarge,
@@ -310,19 +312,23 @@ class _PlantsScreenState extends State<ShopScreen>
                       children: [
                         InkWell(
                             onTap: () {
+                              model.counter--;
                               ProductPageCubit.get(context).decressCounter();
+                              print(model);
                             },
                             child: Text(AppStrings.mins)),
                         const SizedBox(
                           width: AppSize.s5,
                         ),
-                        Text("$counter"),
+                        Text("${model.counter}"),
                         const SizedBox(
                           width: AppSize.s5,
                         ),
                         InkWell(
                           onTap: () {
+                            model.counter++;
                             ProductPageCubit.get(context).incressCounter();
+                            print(model);
                           },
                           child: Text(
                             AppStrings.plus,

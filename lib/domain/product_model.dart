@@ -17,6 +17,7 @@ class ProductData {
   late String imageUrl;
   late String type;
   late int price;
+  int counter = 1;
 
   ProductData.fromJson(Map<String, dynamic> json) {
     productId = json["productId"];

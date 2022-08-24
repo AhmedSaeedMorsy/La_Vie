@@ -22,4 +22,6 @@ class AssetsManager {
   static const String deleteIcon = "$imagePath/deleteIcon.svg";
   static const String likeIcon = "$imagePath/like_icon.svg";
   static const String plus = "$imagePath/plus.svg";
+  static const String giftPlant = "$imagePath/gift_plant.png";
+
 }

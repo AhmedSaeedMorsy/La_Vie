@@ -4,6 +4,7 @@ import 'package:la_vie/presentation/resources/strings_manager.dart';
 import 'package:la_vie/presentation/search/view/search.dart';
 
 import '../forget_password_screen/forget_password_screen.dart';
+import '../gift_plant/view/gift_plant.dart';
 import '../login_screen/view/login_screen.dart';
 import '../mobile_layout/view/mobile_layout.dart';
 import '../my_cart/view/my_cart.dart';
@@ -21,6 +22,8 @@ class Routes {
   static const String searchRoute = "/search";
   static const String myCartRoute = "/myCart";
   static const String createPostRoute = "/createPost";
+    static const String giftPlantRoute = "/giftPlant";
+
 }
 
 class RouteGenerator {
@@ -62,6 +65,10 @@ class RouteGenerator {
       case Routes.createPostRoute:
         return MaterialPageRoute(
           builder: (_) => CreatePostScreen(),
+        );
+        case Routes.giftPlantRoute:
+        return MaterialPageRoute(
+          builder: (_) => GiftPlantScreen(),
         );
       default:
         return unDefiendRoute();

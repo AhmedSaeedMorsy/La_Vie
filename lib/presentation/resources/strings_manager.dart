@@ -27,6 +27,9 @@ class AppStrings {
       "Confirm Password not equal Password ";
   static String search = "search";
   static String all = "All";
+  static String giftPlantTitle = "Get Seeds For Free";
+  static String enterYourAddress = "Enter Your Address";
+  static String send = "Send";
   static String plants = "Plants";
   static String seeds = "Seeds";
   static String tools = "Tools";
@@ -51,4 +54,6 @@ class AppStrings {
   static String title = "Title";
   static String description = "Description";
   static String post = "Post";
+  static String saveForLater = "Save For Later";
+  static String address = "Addtrss";
 }

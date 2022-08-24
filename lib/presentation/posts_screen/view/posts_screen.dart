@@ -25,7 +25,7 @@ class PostsScreen extends StatefulWidget {
 
 class _PostsScreenState extends State<PostsScreen>
     with TickerProviderStateMixin {
-      var floting1 ;
+  var floting1;
   @override
   Widget build(BuildContext context) {
     TabController _tabController =
@@ -198,7 +198,7 @@ class _PostsScreenState extends State<PostsScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(AppSize.s8),
                   child: Container(
                     child: Row(
                       children: [

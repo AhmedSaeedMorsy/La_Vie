@@ -139,7 +139,8 @@ class LoginScreenview extends StatelessWidget {
           Navigator.pushNamed(context, Routes.mobileLayoutRoute);
         } else if (state is SigninWithGoogleSuccessState) {
           CacheHelper.setData(
-              key: SharedKeys.token, value: AuthCubit.get(context).user!.serverAuthCode);
+              key: SharedKeys.token,
+              value: AuthCubit.get(context).user!.serverAuthCode);
           Navigator.pushNamed(context, Routes.mobileLayoutRoute);
         }
       },
@@ -324,7 +325,7 @@ class RegisterScreenview extends StatelessWidget {
           CacheHelper.setData(
               key: SharedKeys.token,
               value: AuthCubit.get(context).userModel.data.accessToken);
-          Navigator.pushNamed(context, Routes.mobileLayoutRoute);
+          Navigator.pushNamed(context, Routes.giftPlantRoute);
         }
       },
       builder: (context, state) {
@@ -524,7 +525,9 @@ class RegisterScreenview extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          AuthCubit.get(context).signInWithGoogle();
+                        },
                         child: SvgPicture.asset(
                           AssetsManager.google,
                         ),

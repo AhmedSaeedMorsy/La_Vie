@@ -56,4 +56,7 @@ class AppStrings {
   static String post = "Post";
   static String saveForLater = "Save For Later";
   static String address = "Addtrss";
+  static String changeEmail = "Change Email";
+  static String changeName = "change Name";
+  static String numPoints = "You have 30 Point";
 }

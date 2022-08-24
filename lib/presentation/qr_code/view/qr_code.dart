@@ -13,7 +13,7 @@ class QrCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => QrCodeCubit(),
-      child: BlocBuilder<QrCodeCubit, QrCodeStates>(
+      child: BlocBuilder<QrCodeCubit,QrCodeStates>(
         builder: (context, state) {
           return Scaffold(
             body: Column(

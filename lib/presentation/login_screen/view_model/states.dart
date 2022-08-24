@@ -19,3 +19,11 @@ class RegisterErrorState extends AuthStates {
   final String error;
   RegisterErrorState(this.error);
 }
+
+class SigninWithGoogleSuccessState extends AuthStates {}
+
+class SigninWithGoogleErrorState extends AuthStates {
+  final String error;
+
+  SigninWithGoogleErrorState(this.error);
+}

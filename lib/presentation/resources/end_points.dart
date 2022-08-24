@@ -4,3 +4,4 @@ const String products = "/api/v1/products";
 const String allPosts = "/api/v1/forums";
 const String myPosts = "/api/v1/forums/me";
 const String createPostUrl = "/api/v1/forums";
+const String googleSignIn = "/api/v1/auth/google";

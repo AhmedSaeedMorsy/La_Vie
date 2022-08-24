@@ -8,16 +8,14 @@ import '../login_screen/view/login_screen.dart';
 import '../mobile_layout/view/mobile_layout.dart';
 import '../my_cart/view/my_cart.dart';
 import '../posts_screen/view/posts_screen.dart';
-import '../register_screen/register_screen.dart';
 import '../splash_screen/splash_screen.dart';
 import '../web_layout/web_layout.dart';
 
 class Routes {
   static const String splashRoute = "/";
   static const String loginRoute = "/login";
-  static const String registerRoute = "/register";
   static const String forgetPasswordRoute = "/forgetPassword";
-  static const String PostsRoute = "/posts";
+  static const String postsRoute = "/posts";
   static const String webLayoutRoute = "/webLayOut";
   static const String mobileLayoutRoute = "/mobileLayOut";
   static const String searchRoute = "/search";
@@ -44,15 +42,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const LoginScreen(),
         );
-      case Routes.registerRoute:
-        return MaterialPageRoute(
-          builder: (_) => const RegisterScreen(),
-        );
+
       case Routes.forgetPasswordRoute:
         return MaterialPageRoute(
           builder: (_) => const ForgetPasswordScreen(),
         );
-      case Routes.PostsRoute:
+      case Routes.postsRoute:
         return MaterialPageRoute(
           builder: (_) => const PostsScreen(),
         );

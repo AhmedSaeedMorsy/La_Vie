@@ -1,4 +1,5 @@
-abstract class QrCodeStates{}
-class QrCodeInitState extends QrCodeStates{}
+abstract class QrCodeStates {}
 
-class QrCodeSucccesState extends QrCodeStates{}
+class QrCodeInitState extends QrCodeStates {}
+
+class QrCodeSucccesState extends QrCodeStates {}

@@ -38,11 +38,11 @@ class _MobileLoginScreenState extends State<MobileLoginScreen>
   @override
   Widget build(BuildContext context) {
     TabController tabController =
-        TabController(length: AppConstants .lenghthOfLoginTap, vsync: this);
+        TabController(length: AppConstants.lenghthOfLoginTap, vsync: this);
     return BlocProvider(
       create: (context) => AuthCubit(),
       child: DefaultTabController(
-        length: AppConstants .lenghthOfLoginTap,
+        length: AppConstants.lenghthOfLoginTap,
         child: Scaffold(
           body: SingleChildScrollView(
             child: Column(
@@ -128,7 +128,7 @@ class LoginScreenview extends StatelessWidget {
               msg: state.error,
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: AppConstants .timeInSecForIosWeb,
+              timeInSecForIosWeb: AppConstants.timeInSecForIosWeb,
               backgroundColor: ColorManager.error,
               textColor: ColorManager.primary,
               fontSize: 16.0);
@@ -136,6 +136,10 @@ class LoginScreenview extends StatelessWidget {
           CacheHelper.setData(
               key: SharedKeys.token,
               value: AuthCubit.get(context).userModel.data.accessToken);
+          Navigator.pushNamed(context, Routes.mobileLayoutRoute);
+        } else if (state is SigninWithGoogleSuccessState) {
+          CacheHelper.setData(
+              key: SharedKeys.token, value: AuthCubit.get(context).user!.serverAuthCode);
           Navigator.pushNamed(context, Routes.mobileLayoutRoute);
         }
       },
@@ -265,7 +269,9 @@ class LoginScreenview extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          AuthCubit.get(context).signInWithGoogle();
+                        },
                         child: SvgPicture.asset(
                           AssetsManager.google,
                         ),

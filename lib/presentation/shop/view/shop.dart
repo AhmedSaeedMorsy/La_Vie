@@ -28,7 +28,7 @@ class _PlantsScreenState extends State<ShopScreen>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController tabController =
+    TabController _tabController =
         TabController(length: AppConstants.lenghthOfPlantsTap, vsync: this);
     return BlocConsumer<ProductPageCubit, ProductPageStates>(
       listener: (context, state) {},
@@ -118,7 +118,7 @@ class _PlantsScreenState extends State<ShopScreen>
                       child: TabBar(
                         labelPadding:
                             const EdgeInsets.symmetric(vertical: AppSize.s4),
-                        controller: tabController,
+                        controller: _tabController,
                         labelColor: ColorManager.lightGreen,
                         labelStyle: Theme.of(context).textTheme.displayLarge,
                         indicator: BoxDecoration(
@@ -152,7 +152,7 @@ class _PlantsScreenState extends State<ShopScreen>
                     Container(
                       height: AppSize.s373,
                       child: TabBarView(
-                        controller: tabController,
+                        controller: _tabController,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           //All Products
@@ -313,8 +313,11 @@ class _PlantsScreenState extends State<ShopScreen>
                         InkWell(
                             onTap: () {
                               model.counter--;
-                              ProductPageCubit.get(context).decressCounter();
-                              print(model);
+                              if (model.counter >= 1)
+                                ProductPageCubit.get(context).decressCounter();
+                              else {
+                                model.counter = 1;
+                              }
                             },
                             child: Text(AppStrings.mins)),
                         const SizedBox(
@@ -328,7 +331,6 @@ class _PlantsScreenState extends State<ShopScreen>
                           onTap: () {
                             model.counter++;
                             ProductPageCubit.get(context).incressCounter();
-                            print(model);
                           },
                           child: Text(
                             AppStrings.plus,

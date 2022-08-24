@@ -41,4 +41,14 @@ class AppStrings {
   static String cartEmpty = "Your Cart is empty";
   static String emptyBio =
       "Sorry, the keyword you entered cannot be found, please check again or searsh with another keyword";
+  static String discussionForums = "Discussion Forums";
+  static String allForums = "All Forums";
+  static String myForums = "My Forums";
+  static String like = "Like";
+  static String replay = "Replies";
+  static String createPost = "Create New Post";
+  static String addPhoto = "Add Photo";
+  static String title = "Title";
+  static String description = "Description";
+  static String post = "Post";
 }

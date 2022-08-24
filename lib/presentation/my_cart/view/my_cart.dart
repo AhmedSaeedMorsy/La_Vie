@@ -10,6 +10,8 @@ import 'package:la_vie/presentation/resources/widget.dart';
 import 'package:la_vie/presentation/shop/view_model/cubit.dart';
 import 'package:la_vie/presentation/shop/view_model/states.dart';
 
+import '../../../domain/product_model.dart';
+
 class MyCartScreen extends StatelessWidget {
   const MyCartScreen({Key? key}) : super(key: key);
 
@@ -33,7 +35,9 @@ class MyCartScreen extends StatelessWidget {
                 return ListView.separated(
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) => cartItem(
-                      context, ProductPageCubit.get(context).carts[index]),
+                      context,
+                      ProductPageCubit.get(context).carts[index],
+                      ProductPageCubit.get(context).productModel.data[index]),
                   separatorBuilder: (context, index) => const SizedBox(
                     height: AppSize.s20,
                   ),
@@ -50,7 +54,7 @@ class MyCartScreen extends StatelessWidget {
     });
   }
 
-  Widget cartItem(context, Map myCart) {
+  Widget cartItem(context, Map myCart, ProductData model) {
     return Container(
       decoration: BoxDecoration(
         color: ColorManager.primary,
@@ -108,9 +112,7 @@ class MyCartScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           InkWell(
-                              onTap: () {
-                                ProductPageCubit.get(context).decressCounter();
-                              },
+                              onTap: () {},
                               child: Text(
                                 AppStrings.mins,
                                 style:
@@ -124,9 +126,7 @@ class MyCartScreen extends StatelessWidget {
                             width: AppSize.s5,
                           ),
                           InkWell(
-                            onTap: () {
-                              ProductPageCubit.get(context).incressCounter();
-                            },
+                            onTap: () {},
                             child: Text(
                               AppStrings.plus,
                               style: Theme.of(context).textTheme.displayMedium,

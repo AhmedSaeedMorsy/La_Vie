@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:la_vie/presentation/create_post_screen/view/create_post_screen.dart';
 import 'package:la_vie/presentation/resources/strings_manager.dart';
 import 'package:la_vie/presentation/search/view/search.dart';
 
 import '../forget_password_screen/forget_password_screen.dart';
-import '../home_screen/view/home_screen.dart';
 import '../login_screen/view/login_screen.dart';
 import '../mobile_layout/view/mobile_layout.dart';
 import '../my_cart/view/my_cart.dart';
+import '../posts_screen/view/posts_screen.dart';
 import '../register_screen/register_screen.dart';
 import '../splash_screen/splash_screen.dart';
 import '../web_layout/web_layout.dart';
@@ -16,12 +17,12 @@ class Routes {
   static const String loginRoute = "/login";
   static const String registerRoute = "/register";
   static const String forgetPasswordRoute = "/forgetPassword";
-  static const String homeRoute = "/home";
+  static const String PostsRoute = "/posts";
   static const String webLayoutRoute = "/webLayOut";
   static const String mobileLayoutRoute = "/mobileLayOut";
   static const String searchRoute = "/search";
-    static const String myCartRoute = "/myCart";
-
+  static const String myCartRoute = "/myCart";
+  static const String createPostRoute = "/createPost";
 }
 
 class RouteGenerator {
@@ -51,17 +52,21 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const ForgetPasswordScreen(),
         );
-      case Routes.homeRoute:
+      case Routes.PostsRoute:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) => const PostsScreen(),
         );
       case Routes.searchRoute:
         return MaterialPageRoute(
           builder: (_) => SearchScreen(),
         );
-        case Routes.myCartRoute:
+      case Routes.myCartRoute:
         return MaterialPageRoute(
           builder: (_) => const MyCartScreen(),
+        );
+      case Routes.createPostRoute:
+        return MaterialPageRoute(
+          builder: (_) => CreatePostScreen(),
         );
       default:
         return unDefiendRoute();

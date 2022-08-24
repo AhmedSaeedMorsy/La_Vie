@@ -56,6 +56,8 @@ class ProductPageCubit extends Cubit<ProductPageStates> {
     emit(DecressCounterState());
   }
 
+//SqlLite
+
   late Database database;
 
   void createDataBase() {
@@ -73,6 +75,7 @@ class ProductPageCubit extends Cubit<ProductPageStates> {
       },
     ).then((value) {
       database = value;
+      emit(OpenDataBaseState());
     });
   }
 
@@ -89,6 +92,7 @@ class ProductPageCubit extends Cubit<ProductPageStates> {
           .then((value) {
         print("$value is inserted");
         getDataFromDataBase(database);
+        emit(AddToCartState());
       });
     });
   }
@@ -100,6 +104,7 @@ class ProductPageCubit extends Cubit<ProductPageStates> {
       value.forEach((element) {
         carts.add(element);
       });
+      emit(GetFromMyCartState());
     });
   }
 
@@ -107,6 +112,7 @@ class ProductPageCubit extends Cubit<ProductPageStates> {
     required int id,
   }) {
     database.rawDelete('DELETE FROM carts WHERE id = ?', [id]).then((value) {
+      emit(DeleteFromMyCartState());
       getDataFromDataBase(database);
     });
   }

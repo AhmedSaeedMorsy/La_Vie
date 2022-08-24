@@ -15,6 +15,7 @@ class SharedWidget {
           Function()? onTap,
           InputBorder? border,
           String? hint,
+          int maxLines = 1,
           Color? fillColor}) =>
       TextFormField(
         cursorColor: ColorManager.lightGreen,
@@ -25,6 +26,7 @@ class SharedWidget {
         validator: validator,
         controller: controller,
         keyboardType: textInputType,
+        maxLines: maxLines,
       );
   static Widget noItemWidget(context) {
     return Column(

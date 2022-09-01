@@ -29,7 +29,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  splash_screen_view: ^2.0.1
   bloc: ^8.0.3
   flutter_bloc: ^8.0.1
   flutter_svg: ^1.1.3

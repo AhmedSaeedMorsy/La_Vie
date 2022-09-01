@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:la_vie/presentation/resources/color_manager.dart';
+import 'package:la_vie/presentation/resources/font_manager.dart';
 import 'package:la_vie/presentation/resources/values_manager.dart';
 
-import 'assets_manager.dart';
-import 'strings_manager.dart';
+import '../resources/assets_manager.dart';
+import '../resources/constants_manager.dart';
+import '../resources/strings_manager.dart';
 
 class SharedWidget {
   static Widget defaultTextFormField(
@@ -48,6 +51,18 @@ class SharedWidget {
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ],
+    );
+  }
+
+  static toast({required String message}) {
+    return Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: AppConstants.timeInSecForIosWeb,
+      backgroundColor: ColorManager.error,
+      textColor: ColorManager.primary,
+      fontSize: FontSizeManager.s16,
     );
   }
 }

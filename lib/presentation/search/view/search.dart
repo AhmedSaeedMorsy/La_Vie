@@ -4,7 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:la_vie/presentation/resources/strings_manager.dart';
 import 'package:la_vie/presentation/resources/values_manager.dart';
-import 'package:la_vie/presentation/resources/widget.dart';
+import 'package:la_vie/presentation/common/widget.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);

@@ -6,7 +6,7 @@ import 'package:la_vie/presentation/resources/assets_manager.dart';
 import 'package:la_vie/presentation/resources/color_manager.dart';
 import 'package:la_vie/presentation/resources/strings_manager.dart';
 import 'package:la_vie/presentation/resources/values_manager.dart';
-import 'package:la_vie/presentation/resources/widget.dart';
+import 'package:la_vie/presentation/common/widget.dart';
 import 'package:la_vie/presentation/shop/view_model/cubit.dart';
 import 'package:la_vie/presentation/shop/view_model/states.dart';
 

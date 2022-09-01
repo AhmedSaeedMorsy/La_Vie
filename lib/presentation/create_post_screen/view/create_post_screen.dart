@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:la_vie/presentation/create_post_screen/view_model/cubit.dart';
@@ -9,12 +7,12 @@ import 'package:la_vie/presentation/resources/assets_manager.dart';
 import 'package:la_vie/presentation/resources/color_manager.dart';
 import 'package:la_vie/presentation/resources/strings_manager.dart';
 import 'package:la_vie/presentation/resources/values_manager.dart';
-import 'package:la_vie/presentation/resources/widget.dart';
+import 'package:la_vie/presentation/common/widget.dart';
 
 class CreatePostScreen extends StatelessWidget {
   CreatePostScreen({Key? key}) : super(key: key);
-  var _titleController = TextEditingController();
-  var _descriptionController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

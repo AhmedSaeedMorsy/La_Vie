@@ -78,7 +78,7 @@ class AuthCubit extends Cubit<AuthStates> {
       },
       url: googleSignIn,
     ).then((value) {
-      CacheHelper.setData(key: SharedKeys.token,value: user!.id);
+      userModel = UserModel.fromjson(value.data);
       print(value.data);
       emit(SigninWithGoogleSuccessState());
     }).catchError((error) {
